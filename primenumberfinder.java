@@ -8,6 +8,8 @@ public class Main {
 
 		int arraysize;
 
+		boolean isprime=true;
+
 		System.out.print("Please enter your range: ");
 
 		arraysize = scanner.nextInt();
@@ -24,17 +26,23 @@ public class Main {
 		}
 
 		for(int num:numbers) {
+			
+			isprime=true;
 
-			boolean isprime=true;
 
 			if(num<=1) {
+				
 				isprime=false;
 			}
 
 			else {
+				
 				for(int i=2; i<num; i++) {
+					
 					if(num%i==0) {
+					
 						isprime=false;
+						
 						break;
 					}
 
@@ -43,9 +51,12 @@ public class Main {
 			}
 
 			if(isprime) {
+				
 				System.out.println("Prime-Number: "+num);
 			}
+		
 			else {
+				
 				System.out.println("Non-Prime Number: "+num);
 			}
 		}
