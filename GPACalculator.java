@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
 
@@ -20,8 +19,7 @@ public class Main {
         final_1 = scanner.nextInt();
 
         gpa = (midterm_1 * 0.2) + (midterm_2 * 0.2) + (lab_1 * 0.2) + (final_1 * 0.4);
-
-        // GPA 4'lük sistem için:
+       
         double gpa4 = gpa / 25.0;
 
         System.out.println("Your weighted average is: " + gpa);
