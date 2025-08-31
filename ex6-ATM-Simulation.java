@@ -21,6 +21,7 @@ public class Main {
 
 			System.out.print("Please make your choice: ");
 			int choice = scanner.nextInt();
+			scanner.nextLine();
 
 			switch (choice) {
 			case 0:
