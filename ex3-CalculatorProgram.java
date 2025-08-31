@@ -19,6 +19,7 @@ public class Main {
             System.out.print("Please make your decision: ");
 
             int number = scanner.nextInt();
+            scanner.nextLine();
 
             switch (number) {
                 case 1:
