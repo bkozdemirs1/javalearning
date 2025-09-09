@@ -2,116 +2,105 @@ import java.util.Scanner;
 
 class Car {
 
-	private String carname;
-	private String model;
-	private double speed;
+    private String carname;
+    private String model;
+    private double speed;
+    private int year;
 
-	Car(String carname,String model,double speed) {
-		this.carname = carname;
-		this.model = model;
-		this.speed = speed;
+    Car(String carname, String model, double speed, int year) {
+        this.carname = carname;
+        this.model = model;
+        this.speed = speed;
+        this.year = year;
+    }
 
-	}
+    void accelerate(double s) {
+        speed += s;
+        System.out.println("Car accelerated. Current speed: " + speed + " km/h");
+    }
 
-	void accelerate(double s) {
+    void decrease(double d) {
+        if (d >= speed) {
+            speed = 0;
+            System.out.println("Your car has been stopped!");
+        } else {
+            speed -= d;
+            System.out.println("Car slowed down. Current speed: " + speed + " km/h");
+        }
+    }
 
-		speed+=s;
-
-		System.out.println("Car has been accelerated "+speed+"km/h");
-	}
-
-	void decrease (double d) {
-
-		if(d > speed) {
-
-			System.out.println("Your car has been stopped!");
-		}
-
-		else
-		{
-
-			speed-=d;
-
-			System.out.println("Car has been decreased "+speed+" " +"km/h");
-
-		}
-
-	}
-
+    void showInfo() {
+        System.out.println("Car Info:");
+        System.out.println("Brand: " + carname);
+        System.out.println("Model: " + model);
+        System.out.println("Year: " + year);
+        System.out.println("Current Speed: " + speed + " km/h");
+    }
 }
 
 public class Main {
+    public static void main(String[] args) {
 
-	public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-		Scanner scanner = new Scanner(System.in);
+        System.out.print("Please enter your car brand: ");
+        String carname = scanner.nextLine();
 
-		System.out.print("Please enter your car brand: ");
+        System.out.print("Please enter your car model: ");
+        String model = scanner.nextLine();
 
-		String carname = scanner.nextLine();
+        System.out.print("Enter the year of manufacture of your vehicle: ");
+        int year = scanner.nextInt();
+        scanner.nextLine();
 
-		System.out.print("Please enter your car model: ");
+        System.out.print("Please enter your initial speed: ");
+        double speed = scanner.nextDouble();
+        scanner.nextLine();
 
-		String model = scanner.nextLine();
+        Car car1 = new Car(carname, model, speed, year);
 
-		System.out.print("Please enter your initial speed: ");
+        System.out.println("\nCar created: " + carname + " " + model + " " + year + " | speed: " + speed + " km/h");
 
-		double speed = scanner.nextDouble();
-		scanner.nextLine();
+        while (true) {
+            
+            System.out.println("\n**********************************");
+            System.out.println(" 1 --> Increase Speed ");
+            System.out.println(" 2 --> Decrease Speed");
+            System.out.println(" 3 --> Show Car's Current Info");
+            System.out.println(" 4 --> Exit");
+            System.out.println("**********************************");
+            System.out.print("Please make your choice: ");
 
-		System.out.println("Car created: "+carname+" "+model+", "+"speed: "+speed+"km/h");
+            int number = scanner.nextInt();
+            scanner.nextLine();
 
+            switch (number) {
+                case 1:
+                    System.out.print("Enter the acceleration amount: ");
+                    double acc = scanner.nextDouble();
+                    scanner.nextLine();
+                    car1.accelerate(acc);
+                    break;
 
-		Car car1 = new Car(carname,model,speed);
+                case 2:
+                    System.out.print("Enter the deceleration amount: ");
+                    double dec = scanner.nextDouble();
+                    scanner.nextLine();
+                    car1.decrease(dec);
+                    break;
 
-		System.out.println("**********************************");
+                case 3:
+                    car1.showInfo();
+                    break;
 
-		System.out.println(" 1--> Increase Speed ");
+                case 4:
+                    System.out.println("Exiting the program. Goodbye!");
+                    return;
 
-		System.out.println(" 2--> Decrease Speed");
-
-		System.out.println(" 3--> Exit");
-
-		System.out.println("Please make your choice: ");
-
-		System.out.println("**********************************");
-
-		int number = scanner.nextInt();
-		scanner.nextLine();
-
-		switch(number) {
-
-		case 1:
-
-			System.out.print("Enter the acceleration amount: ");
-
-			double acc=scanner.nextDouble();
-			scanner.nextLine();
-
-			car1.accelerate(acc);
-
-			break ;
-
-		case 2:
-
-			System.out.print("Enter the deceleration amount: ");
-
-			double dec=scanner.nextDouble();
-			scanner.nextLine();
-
-			car1.decrease(dec);
-
-			break;
-
-		case 3:
-
-			System.out.println("Exiting the program. Goodbye!");
-
-			break;
-
-		default:
-
-			System.out.println("Please make your choice range 1-3!");
-		}
-	}
+                default:
+                    System.out.println("Invalid choice! Please select 1-4.");
+                    break;
+            }
+        }
+    }
 }
