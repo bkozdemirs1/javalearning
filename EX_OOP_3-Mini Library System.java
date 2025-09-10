@@ -120,6 +120,8 @@ public class Main {
 
 				System.out.println("Exiting the program... Goodbye!");
 
+				System.exit(0);
+
 				return;
 
 			default:
