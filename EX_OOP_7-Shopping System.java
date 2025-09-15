@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 class Shopping {
+	
 	private String productName;
 	private double productPrice;
 
@@ -20,10 +21,12 @@ class Shopping {
 }
 
 public class Main {
+	
 	public static void main(String[] args) {
 
 		Scanner scanner = new Scanner(System.in);
-		ArrayList<Shopping> cart = new ArrayList<>();
+		
+		ArrayList <Shopping> cart = new ArrayList<>();
 
 		int choice;
 
