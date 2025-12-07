@@ -60,11 +60,11 @@ public class Main {
 
         if(gpa >= 50) {
             
-            System.out.println(name + " can pass! ✅");
+            System.out.println(name + " can pass! ");
         } 
         else {
             
-            System.out.println(name + " can not pass ❌");
+            System.out.println(name + " can NOT pass ");
         }
     }
 }
