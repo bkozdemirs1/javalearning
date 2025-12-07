@@ -9,6 +9,7 @@ class xPackage {
 	private double price = 0;
 
 	xPackage(String ownerName, double weight, double distance) {
+
 		this.ownerName = ownerName;
 		this.weight = weight;
 		this.distance = distance;
@@ -16,6 +17,7 @@ class xPackage {
 	}
 
 	void calculatePrice() {
+
 		price = (weight * 10) + (distance * 2);
 
 		if (weight > 20) {
@@ -81,6 +83,35 @@ class DeliverySystem {
 		}
 		System.out.println("Total Income: "+sum+" "+"TL");
 	}
+
+	void showReport() {
+
+		double totalweight = 0;
+		double totalprice = 0;
+		double totaldistance = 0;
+		double averagedistance = 0;
+
+		if (packages.isEmpty()) {
+
+			System.out.println("No packages found!");
+			return;
+		}
+
+		int i = 0;
+
+		for(xPackage p:packages) {
+			totalweight += p.getWeight();
+			totalprice += p.getPrice();
+			totaldistance += p.getDistance();
+			averagedistance += totaldistance/(i + 1);
+
+			i++;
+		}
+		System.out.println("Total Price: "+totalprice);
+		System.out.println("Total Weight: "+totalweight);
+		System.out.println("Total Distance: "+totaldistance);
+		System.out.println("Average Distance: "+averagedistance);
+	}
 }
 
 public class Main {
@@ -92,15 +123,18 @@ public class Main {
 		DeliverySystem ds = new DeliverySystem();
 
 		System.out.println("Welcome to Smart Package Delivery System!");
-		System.out.println("Press Enter to continue...");
+		System.out.println("Press Enter to Continue...");
 		scanner.nextLine();
 
 		while (true) {
+
+			int ID = (int)(Math.random() * 99999) + 1;
 
 			System.out.println("***************MENU*************");
 			System.out.println("1 - Add Package");
 			System.out.println("2 - Show All Packages");
 			System.out.println("3 - Show Total Income");
+			System.out.println("4 - Packages Report");
 			System.out.println("0 - Exit");
 			System.out.println("*********************************");
 
@@ -119,13 +153,30 @@ public class Main {
 				double w = scanner.nextDouble();
 				scanner.nextLine();
 
-				System.out.print("Enter delivery distance (km): ");
-				double d = scanner.nextDouble();
-				scanner.nextLine();
+				if( w > 500 ) {
+					System.out.println("Overweight! Please add a product lower than 500 Kg!");
+				}
 
-				ds.addPackage(name, w, d);
+				else {
 
-				break;
+					System.out.print("Enter delivery distance (km): ");
+					double d = scanner.nextDouble();
+					scanner.nextLine();
+
+					if(d > 500) {
+
+						System.out.println("Overroad! Please add a destination lower than 500 Km!");
+					}
+
+					else {
+
+						ds.addPackage(name, w, d);
+
+						System.out.println("Package ID: "+"#"+ID);
+
+						break;
+					}
+				}
 
 			case 2:
 
@@ -140,6 +191,12 @@ public class Main {
 
 				break;
 
+			case 4:
+
+				ds.showReport();
+
+				break;
+
 			case 0:
 
 				System.out.println("Exiting The System... Goodbye!");
@@ -149,4 +206,3 @@ public class Main {
 		}
 	}
 }
-// Some parts will be updated...
