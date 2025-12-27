@@ -17,7 +17,7 @@ public class Main {
 
 			System.out.println("-------------MENU-----------");
 			System.out.println("1. Add Product");
-			System.out.println("2. View Cart");
+			System.out.println("2. View Card");
 			System.out.println("3. Remove Product");
 			System.out.println("4. Show Total");
 			System.out.println("5. Clear Cart");
