@@ -20,7 +20,7 @@ public class Main {
 			System.out.println("2. View Card");
 			System.out.println("3. Remove Product");
 			System.out.println("4. Show Total");
-			System.out.println("5. Clear Cart");
+			System.out.println("5. Clear Card");
 			System.out.println("0. Exit");
 			System.out.println("----------------------------");
 
